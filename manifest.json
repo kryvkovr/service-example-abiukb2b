@@ -17,17 +17,24 @@
   "credentialType": "absolute",
   "policies": [
     {
-      "name": "outbound-access",
-      "attrs": {
-        "host": "httpstat.us",
-        "path": "*"
-      }
-    },
-    {
       "name": "colossus-fire-event"
     },
     {
       "name": "colossus-write-logs"
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "abiukb2b.vtexcommercestable.com.br",
+        "path": "/api/catalog/*"
+      }
+    },
+    {
+      "name": "outbound-access",
+      "attrs": {
+        "host": "abiukb2b.vtexcommercestable.com.br",
+        "path": "/api/oms/*"
+      }
     }
   ],
   "$schema": "https://raw.githubusercontent.com/vtex/node-vtex-api/master/gen/manifest.schema"

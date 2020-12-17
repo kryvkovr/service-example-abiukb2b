@@ -1,24 +1,15 @@
 export async function status(ctx: Context, next: () => Promise<any>) {
   const {
     state: { code },
-    clients: { status: statusClient },
+    // clients: { catalog },
+    clients: { oms },
   } = ctx
+
   console.log('Received code:', code)
 
-  const statusResponse = await statusClient.getStatus(code)
-  console.log('Status response:', statusResponse)
+  // const data = await catalog.getSkuById(code.toString())
+  const data = await oms.listOrders()
 
-  const {
-    headers,
-    data,
-    status: responseStatus,
-  } = await statusClient.getStatusWithHeaders(code)
-  console.log('Status headers', headers)
-  console.log('Status data:', data)
-
-  ctx.status = responseStatus
   ctx.body = data
-  ctx.set('Cache-Control', headers['cache-control'])
-
   await next()
 }
